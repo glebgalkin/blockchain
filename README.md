@@ -1,2 +1,2 @@
-# blockchain
+# Blockchain
 Simple blockchain implementation
