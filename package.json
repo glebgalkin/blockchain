@@ -1,0 +1,23 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "Simple blockchain implementation Language used: Javascript",
+  "main": "blockchain.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glebgalkin/blockchain.git"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glebgalkin/blockchain/issues"
+  },
+  "homepage": "https://github.com/glebgalkin/blockchain#readme",
+  "dependencies": {
+    "sha256": "^0.2.0"
+  }
+}
