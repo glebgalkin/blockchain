@@ -17,6 +17,3 @@ export class Block{
     }
 
 }
-
-
-//module.exports = Block;
