@@ -7,6 +7,7 @@ export class Blockchain{
     constructor(){
         this.chain = [];
         this.chain[0]  = this.addFirstBlock();
+        this.difficulty = 4;
     }
     
 
@@ -18,7 +19,7 @@ export class Blockchain{
     //Adding new block to the chain
     addBlock(Block){
         Block.previous_hash = this.getLastBlock().hash;
-        Block.hash = Block.generateHash();
+        Block.mineBlock(this.difficulty);
         this.chain.push(Block);
     }
 
@@ -28,6 +29,7 @@ export class Blockchain{
     }
 
     //Run throught the chain and check whether the hashes are connectedd
+    //Every block generated hash has to be equal to block hash.
     chainValidation(){
         for (let k = 1; k < this.chain.length; k++){
 
@@ -40,7 +42,7 @@ export class Blockchain{
                 console.log("Previous block hash not equal to current block previous hash")
                 console.log(prev_block.hash);
                 console.log(current_block.previous_hash);
-                return false;
+                return "Validation did not pass" + false;
             }
             if (current_block.hash !== current_block.generateHash()){
 
@@ -48,9 +50,9 @@ export class Blockchain{
                 console.log(current_block.hash);
                 console.log(current_block.generateHash());
 
-                return false;
+                return "Validation did not pass: " + false;
             }
-            return true;
+            return "Validation passed: " + true;
         }
         
         
