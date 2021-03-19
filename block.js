@@ -13,7 +13,8 @@ export class Block{
 
     //Generates Hash for the block once created
     generateHash(){
-        return SHA256(this.timestamp + this.previous_hash+this.timestamp + JSON.stringify(this.data))
+        //console.log(this.timestamp + this.previous_hash+ this.data);
+        return SHA256(this.timestamp + this.previous_hash+ this.data).toString();
     }
 
 }
