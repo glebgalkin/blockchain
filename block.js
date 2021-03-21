@@ -1,14 +1,16 @@
 import SHA256 from 'sha256'
-
+//import { Transaction } from "./transaction.js"
 
 export class Block{
     //Block Constructor
-    constructor(timestamp, data, previous_hash){
+    constructor(timestamp, transactions, previous_hash){
         this.timestamp = timestamp;
-        this.data = data;
+        //this.data = data;
         this.previous_hash = previous_hash;
         this.hash = this.generateHash();
         this.nonce = 0;
+        this.transactions = transactions;
+
     }
 
 
@@ -28,7 +30,7 @@ export class Block{
     //Generates Hash for the block once created
     generateHash(){
         
-        return SHA256(this.timestamp + this.previous_hash+ this.data + this.nonce).toString();
+        return SHA256(this.timestamp + this.previous_hash+ this.transactions + this.nonce).toString();
     }
 
 }
