@@ -3,13 +3,13 @@ import SHA256 from 'sha256'
 
 export class Block{
     //Block Constructor
-    constructor(timestamp, transactions, previous_hash){
+    constructor(timestamp, pendingTransactions =[], previous_hash){
         this.timestamp = timestamp;
         //this.data = data;
         this.previous_hash = previous_hash;
         this.hash = this.generateHash();
         this.nonce = 0;
-        this.transactions = transactions;
+        this.pendingTransactions = pendingTransactions;
 
     }
 
@@ -30,7 +30,7 @@ export class Block{
     //Generates Hash for the block once created
     generateHash(){
         
-        return SHA256(this.timestamp + this.previous_hash+ this.transactions + this.nonce).toString();
+        return SHA256(this.timestamp + this.previous_hash+ this.pendingTransactions + this.nonce).toString();
     }
 
 }

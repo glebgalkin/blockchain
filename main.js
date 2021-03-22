@@ -14,10 +14,16 @@ console.log(blockchain);
 console.log(blockchain.chainValidation())
 */
 
-blockchain.createPendingTransaction(new Transaction("address 1", "address 2", "amount =20"));
+blockchain.createPendingTransaction(new Transaction("address 1", "address 2", 20));
 
 console.log('Starting the miner.');
 
-blockchain.minePendingTransactions('miners address');
+blockchain.minePendingTransactions('a');
 
-console.log("Balance of Gleb is: ", blockchain.getBalance('miners address'));
+blockchain.createPendingTransaction(new Transaction("address 3", "address 4", 30));
+
+blockchain.minePendingTransactions('b');
+
+console.log("Balance of Miners address is: ", blockchain.getBalance('a'));
+
+//Fix Balance Calculation

@@ -4,5 +4,6 @@ export class Transaction{
         this.fromAddress = fromAddress;
         this.toAddress = toAddress;
         this.amount = amount;
+        //Amount is INT
     }
 } 

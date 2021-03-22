@@ -16,7 +16,7 @@ export class Blockchain{
 
     //Adding the first block as a foundation
     addFirstBlock(){
-    return new Block("05/16/2021", "Data of the first block",0);
+    return new Block("05/16/2021", "Data of the first block","0");
     }
 
     //Adding new block to the chain
@@ -29,7 +29,8 @@ export class Blockchain{
     */
 
     minePendingTransactions(walletAddress){
-        let block = new Block(Date.now(),this.pendingTransactions);
+        var dt = new Date();
+        let block = new Block(dt.getFullYear() + "/" + (dt.getMonth() + 1) + "/" + dt.getDate(),this.pendingTransactions,this.getLastBlock().hash );
         block.mineBlock(this.difficulty);
 
         console.log("Block successfully mined")
@@ -37,7 +38,7 @@ export class Blockchain{
         // Empty the pending transactions array once those pushed into new block,
         // Add rewarding transaction to the pending transactions
 
-        this.pendingTransactions = [new Transaction (none, walletAddress, this.miningReward)];
+        this.pendingTransactions = [new Transaction ("none", walletAddress, this.miningReward)];
 
     }
 
@@ -49,16 +50,21 @@ export class Blockchain{
     //get the balance of any address through looping the whole chain
     getBalance(address){
         let balance = 0;
-        for (const block of this.chain){
-            ///DOUBLE CHECK THIS LINE
-            for(const trans of block.transactions){
-                if(address == trans.fromAddress){
+        for (var block in this.chain){
+            //It does not see line 55
+            console.log(this.chain[block]);
+            for(var transaction in block.pendingTransactions){
+                console.log("here1");
+                if(address == transaction.fromAddress){
+                    console.log("here2");
                     balance = balance - trans.amount;
                 }
-                if(address == trans.toAddress){
-                    balance = balance + trans.amount;                }
+                if(address == transaction.toAddress){
+                    balance = balance + transaction.amount;                }
             }
         }
+
+        return balance;
     }
 
 
