@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/glebgalkin/blockchain#readme",
   "dependencies": {
+    "elliptic": "^6.5.4",
     "sha256": "^0.2.0"
   }
 }
