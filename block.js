@@ -1,5 +1,4 @@
 import SHA256 from 'sha256'
-//import { Transaction } from "./transaction.js"
 
 export class Block{
     //Block Constructor

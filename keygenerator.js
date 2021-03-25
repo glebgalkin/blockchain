@@ -1,7 +1,9 @@
-const EC = import('elliptic');
-var ec = new EC('secp256k1');
+import pkg from 'elliptic';
+const { ec } = pkg;
 
-const key = ec.genKeyPair();
+const eliptic_key = ec('secp256k1');
+
+const key = eliptic_key.genKeyPair();
 const publicKey = key.getPublic('hex');
 const privateKey = key.getPrivate('hex');
 
