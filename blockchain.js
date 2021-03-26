@@ -1,6 +1,9 @@
 import { Block } from './block.js'
 import { Transaction } from "./transaction.js"
 
+
+
+
 export class Blockchain{
 
 
@@ -34,6 +37,16 @@ export class Blockchain{
 
     //Transaction is being added to Pending trasactions
     createPendingTransaction(transaction){
+
+        if(!transaction.fromAddress || !transaction.toAddress){
+            throw new Error("Transaction must include 'from' and 'to' address");
+
+        }
+
+        if(!transaction.validTransaction()){
+            throw new Error('Transaction is not valid. Can not add to the chain.');
+        }
+        
         this.pendingTransactions.push(transaction);
     }
 
@@ -67,10 +80,13 @@ export class Blockchain{
     chainValidation(){
         for (let k = 1; k < this.chain.length; k++){
 
-            
 
             const current_block = this.chain[k];
             const prev_block = this.chain[k-1];
+
+            if (!current_block.isValidBlock()){
+                return "Validation did not pass: " + false;
+            }
 
             if (prev_block.hash !== current_block.previous_hash){
                 console.log("Previous block hash not equal to current block previous hash")

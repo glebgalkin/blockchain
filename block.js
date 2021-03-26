@@ -1,4 +1,5 @@
 import SHA256 from 'sha256'
+import { Transaction } from "./transaction.js"
 
 export class Block{
     //Block Constructor
@@ -25,6 +26,29 @@ export class Block{
     //Generates Hash for the block once created
     generateHash(){
         return SHA256(this.timestamp + this.previous_hash+ this.transactions + this.nonce).toString();
+    }
+
+    //Iterating over block, making sure it contains valid transactions:
+    /*
+    isValidBlock(){
+        for (var k = 0; k < this.transactions.length; k++){
+            if(!this.transactions[k].validTransaction()){
+                return false;
+            }
+        }
+
+        return true;
+    }
+    */
+
+    isValidBlock(){
+        for (const tx of this.transactions){
+            if(!tx.validTransaction()){
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }

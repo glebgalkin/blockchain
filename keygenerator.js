@@ -7,6 +7,7 @@ const key = eliptic_key.genKeyPair();
 const publicKey = key.getPublic('hex');
 const privateKey = key.getPrivate('hex');
 
+
 console.log();
 console.log('Private key:', privateKey);
 
