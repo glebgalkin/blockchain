@@ -9,7 +9,6 @@ import { Blockchain } from "./blockchain.js"
 import { Transaction } from "./transaction.js"
 
 import pkg from 'elliptic';
-
 const { ec } = pkg;
 const eliptic_key = ec('secp256k1');
 
@@ -32,18 +31,5 @@ blockchain.createPendingTransaction(tr1);
 
 blockchain.minePendingTransactions(myWalletAddress);
 
+console.log(blockchain.chainValidation());
 
-
-
-/*
-blockchain.createPendingTransaction(new Transaction("address 5", "address 6", 60));
-blockchain.createPendingTransaction(new Transaction("address 7", "address 8", 38));
-
-blockchain.minePendingTransactions('Mining address b');
-
-
-console.log(blockchain);
-
-console.log("Balance of 2 address is a: ", blockchain.getBalance('address 2'));
-
-*/

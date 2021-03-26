@@ -8,6 +8,9 @@ const publicKey = key.getPublic('hex');
 const privateKey = key.getPrivate('hex');
 
 
+
+console.log(key);
+
 console.log();
 console.log('Private key:', privateKey);
 

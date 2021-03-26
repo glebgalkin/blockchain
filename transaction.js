@@ -1,4 +1,7 @@
 import SHA256 from 'sha256'
+import pkg from 'elliptic';
+const { ec } = pkg;
+const eliptic_key = ec('secp256k1');
 
 export class Transaction{
     constructor(fromAddress, toAddress, amount){
