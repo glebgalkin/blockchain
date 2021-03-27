@@ -31,5 +31,4 @@ blockchain.createPendingTransaction(tr1);
 
 blockchain.minePendingTransactions(myWalletAddress);
 
-console.log(blockchain.chainValidation());
-
+console.log(blockchain.getBalance(myWalletAddress));

@@ -57,7 +57,7 @@ export class Blockchain{
             block.transactions.forEach(transaction => {
                 
                 if(address == transaction.fromAddress){
-                    balance = balance - trans.amount;
+                    balance = balance - transaction.amount;
                 }
                 if(address == transaction.toAddress){
                     balance = balance + transaction.amount; 
