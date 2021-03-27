@@ -35,8 +35,15 @@ export class Blockchain{
 
     }
 
+    
     //Transaction is being added to Pending trasactions
     createPendingTransaction(transaction){
+
+        /*
+        if(this.getBalance(transaction.fromAddress)< transaction.amount){
+            throw new Error ('Not Enough funds to send money')
+        }
+        */
 
         if(!transaction.fromAddress || !transaction.toAddress){
             throw new Error("Transaction must include 'from' and 'to' address");
@@ -88,7 +95,7 @@ export class Blockchain{
                 return "Validation did not pass: " + false;
             }
 
-            if (prev_block.hash !== current_block.previous_hash){
+            if (prev_block.generateHash() !== current_block.previous_hash){
                 console.log("Previous block hash not equal to current block previous hash")
                 console.log(prev_block.hash);
                 console.log(current_block.previous_hash);
@@ -96,7 +103,7 @@ export class Blockchain{
             }
             if (current_block.hash !== current_block.generateHash()){
 
-                console.log("Current block has is not equal to current block generated hash:")
+                console.log("Current block hash is not equal to current block generated hash:")
                 console.log(current_block.hash);
                 console.log(current_block.generateHash());
 

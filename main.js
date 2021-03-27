@@ -27,8 +27,8 @@ const blockchain = new Blockchain();
 const tr1 = new Transaction(myWalletAddress, 'Artem', 100);
 tr1.signTransaction(myKey);
 
+
 blockchain.createPendingTransaction(tr1);
 
 blockchain.minePendingTransactions(myWalletAddress);
-
-console.log(blockchain.getBalance(myWalletAddress));
+//Install Angular CLI
